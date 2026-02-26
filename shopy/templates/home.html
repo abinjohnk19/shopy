@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<h2 class="section-title">Latest Products</h2>
+
+<div class="product-grid">
+    {% for product in products %}
+    <div class="product-box">
+
+        {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% else %}
+            <img src="{% static 'css/no-image.png' %}" alt="No image">
+        {% endif %}
+
+        <h3>{{ product.name }}</h3>
+        <p class="price">₹{{ product.price }}</p>
+
+        <div class="btn-group">
+            <a href="/product/{{ product.id }}/" class="btn view-btn">View</a>
+            <a href="{% url 'add_to_cart' product.id %}" class="btn cart-btn">Add to Cart</a>
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

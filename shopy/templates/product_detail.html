@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="detail-wrapper">
+    <div class="detail-card">
+
+        <div class="detail-image">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        </div>
+
+        <div class="detail-info">
+            <h2>{{ product.name }}</h2>
+            <p class="detail-price">₹{{ product.price }}</p>
+            <p class="detail-desc">{{ product.description }}</p>
+
+            <div class="detail-buttons">
+                <a href="{% url 'home' %}" class="btn view-btn">Back</a>
+
+                <form action="{% url 'add_to_cart' product.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn cart-btn">
+                        Add to Cart
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

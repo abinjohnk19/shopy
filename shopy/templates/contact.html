@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Contact Shopy
+{% endblock %}
+
+{% block content %}
+
+<section class="contact-section">
+    <div class="contact-container">
+        <h1 class="contact-title">Contact Shopy</h1>
+        <p class="contact-subtitle">
+            We’re here to assist you. Reach out for support, inquiries, or partnerships.
+        </p>
+
+        <div class="contact-card">
+            <div class="contact-info">
+                <h5>Office Address</h5>
+                <p>Shopy Office<br>Kerala, India</p>
+
+                <h5>Phone</h5>
+                <p>+91&nbsp;12345&nbsp;67890</p>
+                <span class="info-note">Monday – Saturday, 9:00 AM – 6:00 PM (IST)</span>
+
+                <h5>Email</h5>
+                <p>support@shopy.com</p>
+                <span class="info-note">We usually respond within 24 hours</span>
+            </div>
+
+            <div class="contact-form">
+                <form method="post">
+                    {% csrf_token %}
+
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <textarea name="message" rows="4" placeholder="How can we help you?" required></textarea>
+
+                    <button type="submit">Submit Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+{% endblock %}

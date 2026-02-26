@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopy</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="page-container">
+
+    <nav class="navbar">
+        <div class="logo">Shopy</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/cart/">Cart</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            {% if user.is_authenticated %}
+    <li>Welcome, {{ user.username }}</li>
+    <li><form method="post" action="{% url 'logout' %}" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" class="logout-btn">Logout</button>
+</form></li>
+{% else %}
+    <li><a href="{% url 'login' %}">Login</a></li>
+    <li><a href="{% url 'register' %}">Register</a></li>
+{% endif %}
+        </ul>
+    </nav>
+
+    <main class="content">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        © 2026 Shopy. All rights reserved.
+    </footer>
+
+</div>
+<script>
+window.addEventListener("scroll", function() {
+    const nav = document.querySelector(".navbar");
+    if (window.scrollY > 20) {
+        nav.style.boxShadow = "0 8px 25px rgba(0,0,0,0.3)";
+    } else {
+        nav.style.boxShadow = "0 4px 15px rgba(0,0,0,0.2)";
+    }
+});
+</script>
+</body>
+</html>

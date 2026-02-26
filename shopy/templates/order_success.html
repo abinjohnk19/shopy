@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="success-wrapper">
+    <div class="success-card">
+
+        <h2>🎉 Order Placed Successfully!</h2>
+
+        <p><strong>Order ID:</strong> #{{ order.id }}</p>
+        <p><strong>Product:</strong> {{ order.product.name }}</p>
+        <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+        <p><strong>Total:</strong> ₹{{ order.product.price|floatformat:2 }}</p>
+        <p><strong>Payment Method:</strong> {{ order.payment_method }}</p>
+
+        <a href="{% url 'home' %}" class="btn cart-btn">
+            Continue Shopping
+        </a>
+
+    </div>
+</div>
+
+{% endblock %}
